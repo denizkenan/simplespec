@@ -1,4 +1,4 @@
-.PHONY: help install test lint format type-check clean build publish dev-install
+.PHONY: help install test lint format type-check clean build publish dev-install check-release
 
 help:  ## Show this help message
 	@echo "Available targets:"
@@ -56,5 +56,8 @@ publish:  ## Publish to PyPI (requires PYPI_API_TOKEN environment variable)
 	uv run twine upload dist/* --username __token__ --password $$PYPI_API_TOKEN
 
 check-all: lint format-check type-check test  ## Run all checks
+
+check-release:  ## Check GitHub Actions release status
+	./check_release.sh
 
 ci: check-all  ## Run CI pipeline locally

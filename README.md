@@ -219,6 +219,29 @@ uv run mypy simplespec
 8. Push to the branch (`git push origin feature/amazing-feature`)
 9. Open a Pull Request
 
+## Releasing
+
+See [RELEASE.md](RELEASE.md) for detailed release procedures. Quick summary:
+
+### Manual Release
+```bash
+# Update version in simplespec/__init__.py and pyproject.toml
+# Update CHANGELOG.md
+# Build and publish
+./publish.sh
+```
+
+### Automated Release (Recommended)
+```bash
+# Update version and changelog, commit changes
+git add -A && git commit -m "Bump version to x.y.z"
+git push origin main
+
+# Create and push tag to trigger GitHub Actions
+git tag vx.y.z
+git push origin vx.y.z
+```
+
 ## Compatibility
 
 - **Python**: 3.11+
