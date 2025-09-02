@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "simplespec"
-version = "0.1.0"
+version = "0.1.1"
 description = "Convert Python typing annotations, Pydantic v2 models, and dataclasses into a compact, human-readable schema"
 readme = "README.md"
 license = { text = "Apache-2.0" }
