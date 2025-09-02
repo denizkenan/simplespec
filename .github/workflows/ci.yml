@@ -34,10 +34,15 @@ jobs:
       run: uv run mypy simplespec
 
     - name: Run tests
-      run: uv run pytest --cov=simplespec --cov-report=xml
+      run: uv run pytest --cov=simplespec --cov-report=xml --junitxml=junit.xml
 
-    - name: Upload coverage reports to Codecov
+    - name: Upload test results to Codecov
+      if: ${{ !cancelled() }}
+      uses: codecov/test-results-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+
+    - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v5
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        file: ./coverage.xml
